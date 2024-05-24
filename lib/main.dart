@@ -29,13 +29,26 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final _movieList = <String>[
+    "The Shark",
+    "The Godfather",
+    "The Dark Knight",
+    "The Godfather II",
+    "The Lord of the Ring",
+    "Pulp Fiction",
+    "Schindler's List"
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Movies')),
-      body: Center(child: ListView.builder(itemBuilder: (context, index) {
-        return Text('Hello there');
-      })),
+      body: Center(
+          child: ListView.builder(
+              itemCount: _movieList.length, // limit to number of items
+              itemBuilder: (context, index) {
+                return Text(_movieList[index]);
+              })),
     );
   }
 }
