@@ -44,6 +44,8 @@ class _HomeState extends State<Home> {
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(movies[index]),
+                  subtitle: Text('sub'),
+                  trailing: Icon(Icons.sunny),
                   leading: CircleAvatar(
                     child: Text(movies[index][0]),
                   ),
