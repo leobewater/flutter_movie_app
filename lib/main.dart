@@ -42,7 +42,18 @@ class _HomeState extends State<Home> {
           child: ListView.builder(
               itemCount: movies.length, // limit to number of items
               itemBuilder: (context, index) {
-                return Text(movies[index]);
+                return ListTile(
+                  title: Text(movies[index]),
+                  leading: CircleAvatar(
+                    child: Text(movies[index][0]),
+                  ),
+                );
+
+                // return Card(
+                //   child: Center(
+                //     child: Text(movies[index]),
+                //   ),
+                // );
               })),
     );
   }
