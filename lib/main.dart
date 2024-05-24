@@ -33,6 +33,9 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Movies')),
+      body: Center(child: ListView.builder(itemBuilder: (context, index) {
+        return Text('Hello there');
+      })),
     );
   }
 }
