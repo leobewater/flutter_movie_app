@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/providers/movie_provider.dart';
-import 'package:flutter_movie_app/utils/movie_parser.dart';
 import 'package:provider/provider.dart';
+
+import 'pages/movie_details.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -72,16 +73,35 @@ class _HomeState extends State<Home> {
                               text: TextSpan(
                                   style: DefaultTextStyle.of(context).style,
                                   children: [
-                                     TextSpan(
+                                    TextSpan(
                                         text: 'Released: ',
                                         style: Theme.of(context)
                                             .textTheme
                                             .labelLarge
                                             ?.copyWith(
                                                 fontWeight: FontWeight.bold)),
-                                    TextSpan(text: '${movie.released}')
+                                    TextSpan(text: '${movie.released} \n'),
+                                    TextSpan(
+                                        text: 'Plot: ',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge
+                                            ?.copyWith(
+                                                fontWeight: FontWeight.bold)),
+                                    TextSpan(text: movie.plot),
                                   ]),
-                            )
+                            ),
+                            TextButton(
+                                onPressed: () {
+                                  // Take to the movie details screen
+                                  // use Navigator
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const MovieDetails()));
+                                },
+                                child: const Text('Read More'))
                           ],
                         ),
                       )
