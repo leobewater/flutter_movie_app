@@ -9,7 +9,7 @@ class MovieDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Movie Details')),
+      appBar: AppBar(title: Text(movie.title)),
       body: Text(movie.title),
     );
   }
