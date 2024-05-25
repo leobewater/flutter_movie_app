@@ -53,19 +53,48 @@ class _HomeState extends State<Home> {
               itemCount: movieData.movieList.length, // limit to number of items
               itemBuilder: (context, index) {
                 final movie = movieData.movieList[index];
-
-                return ListTile(
-                  title: Text(movie.title),
-                  subtitle: const Text('sub'),
-                  trailing: const Icon(Icons.sunny),
-                  leading: CircleAvatar(
-                    child: Text(movie.title[0]),
+                return Card(
+                  child: ExpansionTile(
+                    title: Text(movie.title),
+                    subtitle: Text('Director: ${movie.director}'),
+                    leading: CircleAvatar(
+                      child: Text(movie.title[0]),
+                    ),
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.only(
+                          left: 75,
+                        ),
+                        child: Column(
+                          children: [
+                            RichText(
+                              text: TextSpan(
+                                  style: DefaultTextStyle.of(context).style,
+                                  children: [
+                                     TextSpan(
+                                        text: 'Released: ',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge
+                                            ?.copyWith(
+                                                fontWeight: FontWeight.bold)),
+                                    TextSpan(text: '${movie.released}')
+                                  ]),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
                   ),
                 );
 
-                // return Card(
-                //   child: Center(
-                //     child: Text(movies[index]),
+                // return ListTile(
+                //   title: Text(movie.title),
+                //   subtitle: const Text('sub'),
+                //   trailing: const Icon(Icons.sunny),
+                //   leading: CircleAvatar(
+                //     child: Text(movie.title[0]),
                 //   ),
                 // );
               })),
