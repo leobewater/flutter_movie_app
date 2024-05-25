@@ -13,7 +13,25 @@ class MovieDetails extends StatelessWidget {
         appBar: AppBar(title: const Text('Movie Details')),
         body: Container(
           child: Column(
-            children: [MovieCard(movie: movie)],
+            children: [
+              MovieCard(movie: movie),
+              Text('Movie Posters',
+                  style: Theme.of(context).textTheme.headlineSmall),
+              SizedBox(
+                height: 200,
+                width: double.infinity,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: movie.images.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        elevation: 4.0,
+                        child: Image.network(movie.images[index],
+                            fit: BoxFit.cover),
+                      );
+                    }),
+              ),
+            ],
           ),
         ));
   }
