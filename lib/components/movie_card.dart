@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/models/movie.dart';
 import 'package:flutter_movie_app/pages/movie_details.dart';
@@ -7,9 +6,11 @@ class MovieCard extends StatelessWidget {
   const MovieCard({
     super.key,
     required this.movie,
+    this.isDetails = false,
   });
 
   final Movie movie;
+  final bool isDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -38,30 +39,30 @@ class MovieCard extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .labelLarge
-                                ?.copyWith(
-                                    fontWeight: FontWeight.bold)),
+                                ?.copyWith(fontWeight: FontWeight.bold)),
                         TextSpan(text: '${movie.released} \n'),
                         TextSpan(
                             text: 'Plot: ',
                             style: Theme.of(context)
                                 .textTheme
                                 .labelLarge
-                                ?.copyWith(
-                                    fontWeight: FontWeight.bold)),
+                                ?.copyWith(fontWeight: FontWeight.bold)),
                         TextSpan(text: movie.plot),
                       ]),
                 ),
-                TextButton(
-                    onPressed: () {
-                      // Take to the movie details screen
-                      // use Navigator
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  MovieDetails(movie: movie)));
-                    },
-                    child: const Text('Read More'))
+                isDetails
+                    ? const Text('')
+                    : TextButton(
+                        onPressed: () {
+                          // Take to the movie details screen
+                          // use Navigator
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      MovieDetails(movie: movie)));
+                        },
+                        child: const Text('Read More'))
               ],
             ),
           )
