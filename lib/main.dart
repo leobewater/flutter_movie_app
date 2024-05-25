@@ -54,6 +54,7 @@ class _HomeState extends State<Home> {
               itemCount: movieData.movieList.length, // limit to number of items
               itemBuilder: (context, index) {
                 final movie = movieData.movieList[index];
+
                 return Card(
                   child: ExpansionTile(
                     title: Text(movie.title),
@@ -99,7 +100,7 @@ class _HomeState extends State<Home> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const MovieDetails()));
+                                              MovieDetails(movie: movie)));
                                 },
                                 child: const Text('Read More'))
                           ],
